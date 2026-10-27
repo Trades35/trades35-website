@@ -1,0 +1,514 @@
+/* --- Reset & Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #07070a;
+    --text-color: #ededed;
+    --text-muted: #a1a1aa;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Typography & Utilities --- */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.gradient-text {
+    background: linear-gradient(to right, #60a5fa, #2dd4bf);
+
+    /* Standard property (fixes the Zed warning) */
+    background-clip: text;
+
+    /* Webkit fallback for Safari/Chrome */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(7, 7, 10, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 55px;
+    width: auto;
+    filter: drop-shadow(0px 0px 8px rgba(59, 130, 246, 0.4));
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+.logo img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 15px rgba(59, 130, 246, 0.8));
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+.nav-links a:hover {
+    color: var(--primary);
+    transition: color 0.2s;
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 60px 24px;
+    position: relative;
+    overflow: hidden;
+
+    background-image:
+    /* 1. This makes it VERY dark, letting text pop */
+        linear-gradient(
+            to bottom,
+            rgba(7, 7, 10, 0.45) 0%,
+            rgba(7, 7, 10, 1) 100%
+        ),
+        /* 2. Your logo */ url("logo.png");
+
+    /* 3. Make it fill the whole page */
+    background-size: cover;
+    /* 4. Zoom in slightly so we focus on the dragon and cut off the square edges */
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect on scroll */
+}
+
+/* Let's remove the ::before block we added last time */
+.hero::before {
+    display: none;
+}
+
+/* --- Text adjustments to push it down --- */
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+    animation: fadeUp 1s ease-out forwards;
+    opacity: 0;
+    margin-top: 35vh; /* Pushes the text to the bottom half of the screen */
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    /* Adding a shadow to make text pop over the background */
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Buttons --- */
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    background: var(--bg-color); /* Added background so it's clickable */
+}
+.btn-secondary:hover {
+    background: var(--card-bg);
+}
+
+.btn-text {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.btn-text:hover {
+    color: white;
+}
+
+/* --- Decorative Glow --- */
+.glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(7, 7, 10, 0) 70%
+    );
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- Features Section (Fixed Styling) --- */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    background-color: var(
+        --bg-color
+    ); /* Ensures solid background behind cards */
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.feature-card .icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 24px;
+    }
+    .nav-links a:not(.btn-secondary) {
+        display: none;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .features {
+        padding: 40px 24px;
+    }
+    .logo img {
+        height: 45px;
+    }
+    .hero {
+        background-size: 400px;
+    }
+}
+
+/* --- Footer Section --- */
+.site-footer {
+  background-color: #050508; /* Slightly darker than the main background */
+  border-top: 1px solid var(--border-color);
+  padding: 60px 48px 20px 48px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Brand Column */
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 16px;
+  filter: drop-shadow(0px 0px 8px rgba(59, 130, 246, 0.3));
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Links Columns */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links h4 {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  transform: translateX(4px); /* Slides slightly right on hover */
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 24px 20px 24px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* --- Footer Grid Fix --- */
+/* This forces the footer to break out of the features grid if it got trapped inside */
+.site-footer {
+  grid-column: 1 / -1; /* Spans across all grid columns */
+  width: 100vw; /* Takes up full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* --- Streams Section --- */
+.streams-section {
+  padding: 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.stream-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.stream-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover effects for the cards */
+.twitch-card:hover {
+  border-color: rgba(145, 70, 255, 0.5); /* Twitch Purple */
+  background: rgba(145, 70, 255, 0.05);
+}
+
+.youtube-card:hover {
+  border-color: rgba(255, 0, 0, 0.5); /* YouTube Red */
+  background: rgba(255, 0, 0, 0.05);
+}
+
+.stream-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: var(--text-color);
+}
+
+.stream-info p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+/* Overriding button colors for these specific cards */
+.twitch-card .btn-primary {
+  background-color: #9146FF;
+  box-shadow: 0 4px 14px rgba(145, 70, 255, 0.3);
+}
+.twitch-card .btn-primary:hover {
+  background-color: #7a35d9;
+  box-shadow: 0 6px 20px rgba(145, 70, 255, 0.5);
+}
+
+.youtube-card .btn-secondary {
+  border-color: rgba(255, 0, 0, 0.3);
+}
+.youtube-card .btn-secondary:hover {
+  background-color: #FF0000;
+  color: white;
+  border-color: #FF0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .streams-section {
+    padding: 40px 24px;
+  }
+  .stream-container {
+    grid-template-columns: 1fr; /* Stacks vertically on mobile */
+  }
+}
+
+/* --- New Centered Footer Layout --- */
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Stacks things vertically */
+  align-items: center;    /* Centers everything */
+  gap: 40px;
+}
+
+.footer-tagline {
+  text-align: center;
+}
+
+.footer-tagline p {
+  font-size: 1.2rem;
+  color: var(--text-color); /* Brighter than the muted text */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  max-width: 500px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  gap: 80px; /* Space between the two link columns */
+  text-align: center; /* Centers the link text */
+}
+
+/* Make sure the links still stack nicely */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Remove the left-slide hover effect since it looks weird centered */
+.footer-links a:hover {
+  transform: none;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-columns {
+    gap: 40px;
+  }
+}
