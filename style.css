@@ -607,3 +607,85 @@ a {
 .streams-section, .guild-section, .games-section, .features, .site-footer {
   background-color: transparent !important;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablet & Mobile)
+   ========================================= */
+
+/* --- TABLETS (iPads, etc. - up to 1024px) --- */
+@media (max-width: 1024px) {
+  .stream-container {
+    grid-template-columns: 1fr;
+  }
+
+  .guild-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .games-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 80vh;
+    padding-top: 80px;
+  }
+  
+  .hero-content {
+    margin-top: 10vh;
+  }
+}
+
+/* --- MOBILES (up to 768px) --- */
+@media (max-width: 768px) {
+  .nav-links a:not(.btn-secondary) {
+    display: none;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .streams-section, .guild-section, .games-section, .features {
+    padding: 60px 20px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-tagline p {
+    font-size: 1rem;
+  }
+}
+
+/* --- SMALL MOBILES (up to 480px) --- */
+@media (max-width: 480px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+}
