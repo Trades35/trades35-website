@@ -15,35 +15,34 @@
     --border-color: rgba(255, 255, 255, 0.1);
 }
 
-
-
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  overflow-x: hidden;
-  
-  /* The dragon image */
-  background-image: url('logo.png');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed; /* Locks it in place */
-  background-repeat: no-repeat;
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+
+    /* The dragon image */
+    background-image: url("logo.png");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed; /* Locks it in place */
+    background-repeat: no-repeat;
 }
 
 /* The dark overlay that makes it see-through but readable */
 body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  /* 0.85 is very dark, 0.5 is very light. Adjust this number to taste! */
-  background-color: rgba(7, 7, 10, 0.85); 
-  z-index: -1;
-  pointer-events: none;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* 0.85 is very dark, 0.5 is very light. Adjust this number to taste! */
+    background-color: rgba(7, 7, 10, 0.75);
+    z-index: -1;
+    pointer-events: none;
 }
-
-
 
 a {
     text-decoration: none;
@@ -98,15 +97,17 @@ a {
 
 /* --- Hero Section --- */
 
-
-
 .hero {
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  text-align: center; padding: 120px 24px 60px 24px; position: relative; overflow: hidden;
-  background-color: transparent; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 60px 24px;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
 }
-
-
 
 /* ::before removed */
 .hero-content {
@@ -600,12 +601,16 @@ a {
 .guild-section,
 .games-section,
 .features {
-  background-color: var(--bg-color);
+    background-color: var(--bg-color);
 }
 
 /* Make sections transparent so the background shows through */
-.streams-section, .guild-section, .games-section, .features, .site-footer {
-  background-color: transparent !important;
+.streams-section,
+.guild-section,
+.games-section,
+.features,
+.site-footer {
+    background-color: transparent !important;
 }
 
 /* =========================================
@@ -614,78 +619,126 @@ a {
 
 /* --- TABLETS (iPads, etc. - up to 1024px) --- */
 @media (max-width: 1024px) {
-  .stream-container {
-    grid-template-columns: 1fr;
-  }
+    .stream-container {
+        grid-template-columns: 1fr;
+    }
 
-  .guild-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+    .guild-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 
-  .games-list {
-    grid-template-columns: 1fr;
-  }
+    .games-list {
+        grid-template-columns: 1fr;
+    }
 
-  .hero {
-    min-height: 80vh;
-    padding-top: 80px;
-  }
-  
-  .hero-content {
-    margin-top: 10vh;
-  }
+    .hero {
+        min-height: 80vh;
+        padding-top: 80px;
+    }
+
+    .hero-content {
+        margin-top: 10vh;
+    }
 }
 
 /* --- MOBILES (up to 768px) --- */
 @media (max-width: 768px) {
-  .nav-links a:not(.btn-secondary) {
-    display: none;
-  }
+    .nav-links a:not(.btn-secondary) {
+        display: none;
+    }
 
-  .navbar {
-    padding: 12px 20px;
-  }
+    .navbar {
+        padding: 12px 20px;
+    }
 
-  .hero h1 {
-    font-size: 2.5rem;
-    letter-spacing: -1px;
-  }
-  
-  .hero p {
-    font-size: 1rem;
-  }
+    .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+    }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .hero p {
+        font-size: 1rem;
+    }
 
-  .streams-section, .guild-section, .games-section, .features {
-    padding: 60px 20px;
-  }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  .section-header h2 {
-    font-size: 2rem;
-  }
+    .streams-section,
+    .guild-section,
+    .games-section,
+    .features {
+        padding: 60px 20px;
+    }
 
-  .footer-columns {
-    flex-direction: column;
-    gap: 30px;
-  }
+    .section-header h2 {
+        font-size: 2rem;
+    }
 
-  .footer-tagline p {
-    font-size: 1rem;
-  }
+    .footer-columns {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-tagline p {
+        font-size: 1rem;
+    }
 }
 
 /* --- SMALL MOBILES (up to 480px) --- */
 @media (max-width: 480px) {
-  .features {
-    grid-template-columns: 1fr;
-  }
-  
-  .logo img {
-    height: 40px;
-  }
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+}
+
+/* --- The ONLY change: Text styling for the Guild section --- */
+.guild-closing {
+    display: block !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+    padding: 16px !important;
+    background: rgba(59, 130, 246, 0.15) !important;
+    border-left: 4px solid #3b82f6 !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: #ededed !important;
+}
+
+.guild-text .guild-closing {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-color) !important;
+}
+
+/* --- The Blue Box for the closing statement --- */
+.guild-text .guild-closing {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-color) !important;
+}
+
+/* --- The Blue Box --- */
+.guild-text .guild-closing {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 16px;
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-left: 4px solid var(--primary) !important;
+    border-radius: 0 8px 8px 0;
+    color: var(--text-color) !important;
+    display: block;
 }
